@@ -1,68 +1,53 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Global reset-ish */
+* { -webkit-tap-highlight-color: transparent; }
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body, #root {
+  height: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Typography & default colors (AA contrast-friendly) */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  @apply bg-white text-gray-800 font-sans;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Focus visibility (keyboard a11y) */
+:focus-visible {
+  outline: 3px solid theme('colors.brand.400');
+  outline-offset: 2px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition shadow-soft;
 }
-button:hover {
-  border-color: #646cff;
+.btn-primary {
+  @apply bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn-outline {
+  @apply border border-gray-300 text-gray-800 hover:bg-gray-50;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Cards */
+.card {
+  @apply bg-white rounded-xl border border-gray-200 shadow-soft;
+}
+.card-hover:hover {
+  @apply shadow-lg;
+}
+
+/* Form controls */
+.input {
+  @apply w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-brand-200;
+}
+.label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+/* Badges */
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-800;
 }
