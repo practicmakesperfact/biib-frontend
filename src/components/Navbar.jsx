@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
-
+const LOGO =
+  "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg";
+  
 export default function Navbar() {
   return (
     <nav className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
