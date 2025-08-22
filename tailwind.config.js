@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
-          
+
   darkMode: "class", // Optional: enables dark mode via class
   theme: {
     extend: {
@@ -66,5 +66,9 @@ export default {
       },
     },
   },
- 
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };
