@@ -7,7 +7,7 @@ const products = [
     beds: 3,
     baths: 2.5,
     floors: 2,
-    img: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: 2,

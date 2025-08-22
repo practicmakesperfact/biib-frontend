@@ -29,7 +29,8 @@ export default function Hero() {
               Request Custom Design
             </Link>
           </div>
-        </div>
+        </div> 
+        
       </div>
     </section>
   );
