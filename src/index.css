@@ -1,54 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 entry + plugins */
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";
 
+/* Tell Tailwind where to scan (v4 uses @source, not tailwind.config.js content) */
+@source "../index.html";
+@source "./**/*.{js,jsx,ts,tsx}";
 
-/* Global reset-ish */
-* { -webkit-tap-highlight-color: transparent; }
+/* Theme tokens (v4 style) */
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 
-html, body, #root {
-  height: 100%;
+  --color-brand-100: #E3F2FD;
+  --color-brand-200: #90CAF9;
+  --color-brand-300: #64B5F6;
+  --color-brand-400: #42A5F5;
+  --color-brand-500: #2196F3;
+  --color-brand-600: #1E88E5;
+  --color-brand-700: #1976D2;
 }
 
-/* Typography & default colors (AA contrast-friendly) */
+/* Base */
 body {
-  @apply bg-white text-gray-800 font-sans;
+  @apply bg-white text-gray-800 font-sans antialiased;
 }
-
-/* Focus visibility (keyboard a11y) */
 :focus-visible {
-  outline: 3px solid theme('colors.brand.400');
-  outline-offset: 2px;
+  @apply outline outline-[3px] outline-brand-400 outline-offset-2;
 }
 
-/* Buttons */
+/* Components */
 .btn {
-  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition shadow-soft;
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition duration-200 ease-in-out shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 .btn-primary {
-  @apply bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700;
+  @apply bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700 focus:ring-brand-300;
 }
 .btn-outline {
-  @apply border border-gray-300 text-gray-800 hover:bg-gray-50;
+  @apply border border-gray-300 text-gray-800 hover:bg-gray-50 focus:ring-gray-300;
 }
 
-/* Cards */
 .card {
-  @apply bg-white rounded-xl border border-gray-200 shadow-soft;
+  @apply bg-white rounded-xl border border-gray-200 shadow-sm p-4;
 }
 .card-hover:hover {
-  @apply shadow-lg;
+  @apply shadow-lg transition-shadow duration-200;
 }
 
-/* Form controls */
 .input {
-  @apply w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-brand-200;
+  @apply w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-4 focus:ring-brand-200 placeholder-gray-400;
 }
 .label {
-  @apply block text-sm font-medium text-gray-700;
+  @apply block text-sm font-medium text-gray-700 mb-1;
 }
 
-/* Badges */
 .badge {
   @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-800;
+}
+
+.shadow-soft {
+  @apply shadow-md;
 }
