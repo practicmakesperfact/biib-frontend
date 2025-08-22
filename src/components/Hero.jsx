@@ -1,34 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import heroImg from "../assets/img/hero.jpg";
+import { useNavigate } from "react-router-dom";
 
-const Hero = () => {
+export default function Hero() {
+  const nav = useNavigate();
   return (
-    <section className="bg-neutral py-20 text-center">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-          Your Dream Home Awaits
+    <section className="relative h-64 md:h-96">
+      <img
+        src={heroImg}
+        alt="Featured Plan"
+        className="object-cover w-full h-full"
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white p-4">
+        <h1 className="text-3xl md:text-5xl font-bold">
+          Downloadable House Plans, Instantly
         </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Diverse & Inspired Designs from talented architects. New plans added
-          daily.
-        </p>
-        <div className="flex justify-center space-x-4">
-          <Link
-            to="/catalog"
-            className="bg-primary text-white px-6 py-3 rounded-md text-lg"
-          >
-            Browse Plans
-          </Link>
-          <Link
-            to="/services"
-            className="border border-primary text-primary px-6 py-3 rounded-md text-lg"
-          >
-            Request Quote
-          </Link>
-        </div>
+        <button
+          onClick={() => nav("/catalog")}
+          className="mt-4 bg-blue-500 px-6 py-2 rounded"
+        >
+          Browse Plans
+        </button>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
