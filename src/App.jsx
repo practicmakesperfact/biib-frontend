@@ -1,31 +1,32 @@
-import "./App.css";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import ProductCard from "./components/ProductCard.jsx";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Account from "./pages/Account";
+// ... other pages
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Header />
-      <Hero />
-      <ProductCard
-        plan={{
-          id: 1,
-          title: "Sample Plan",
-          thumbnail: "https://via.placeholder.com/150",
-          price: 100,
-          sqft: 2000,
-          beds: 3,
-          baths: 2,
-          floors: 1,
-          rating: 4,
-          reviews: 10,
-          fileType: "PDF",
-        }}
-      />
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/account" element={<Account />} />
+          {/* ...more routes */}
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
