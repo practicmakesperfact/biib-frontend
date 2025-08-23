@@ -1,8 +1,12 @@
 
+
 import { Link } from "react-router-dom";
 import { ShoppingCart, Eye } from "lucide-react";
+import { useCart } from "../../hooks/useCart";
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart(); 
+
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col">
       {/* Image */}
@@ -37,7 +41,11 @@ export default function ProductCard({ product }) {
           <span className="text-xl font-bold text-blue-600">
             ${product.price.toFixed(2)}
           </span>
-          <button className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700">
+          {/*  updated button with addToCart */}
+          <button
+            onClick={() => addToCart(product)}
+            className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700"
+          >
             <ShoppingCart className="w-5 h-5" />
           </button>
         </div>
