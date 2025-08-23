@@ -1,31 +1,25 @@
 
 import { useState } from "react";
-import Button from "../ui/Button";
+import { debounce } from "@/utils/debounce";
 
-export default function SearchBar({
-  defaultValue = "",
-  onSearch,
-  onOpenFilters,
-}) {
-  const [q, setQ] = useState(defaultValue);
+export function SearchBar({ onSearch }) {
+  const [value, setValue] = useState("");
 
-  const submit = (e) => {
-    e.preventDefault();
-    onSearch?.(q);
-  };
+  // Wrap onSearch in debounce
+  const handleSearch = debounce((query) => {
+    onSearch(query);
+  }, 400);
 
   return (
-    <form onSubmit={submit} className="flex gap-2">
-      <input
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder="Search plans, styles, sqft…"
-        className="input"
-      />
-      <Button type="submit">Search</Button>
-      <Button type="button" variant="outline" onClick={onOpenFilters}>
-        Filters
-      </Button>
-    </form>
+    <input
+      type="text"
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        handleSearch(e.target.value);
+      }}
+      placeholder="Search house plans, styles, keywords..."
+      className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
+    />
   );
 }
