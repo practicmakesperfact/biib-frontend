@@ -1,48 +1,28 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CartProvider } from "./hooks/useCart";
 
-// Layout wrapper
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 
-// Shared components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-
-// Pages
-import HomePage from "./pages/HomePage";
-import CatalogPage from "./pages/CatalogPage";
-import ServicesPage from "./pages/ServicesPage";
-import TutorialsPage from "./pages/TutorialsPage";
-import AccountPage from "./pages/AccountPage";
+// pages 
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
-import SingleProduct from "./pages/SingleProduct";
-import Cart from "./pages/Cart";
+import Services from "./pages/Services";
+import Tutorials from "./pages/Tutorials";
+import Account from "./pages/Account";
 
-function App() {
+export default function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route element={<Layout />}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/catalog" element={<CatalogPage />} />
-                <Route path="/services" element={<ServicesPage />} />
-                <Route path="/tutorials" element={<TutorialsPage />} />
-                <Route path="/account" element={<AccountPage />} />
-              </Route>
-              <Route path="/product/:id" element={<SingleProduct />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </CartProvider>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/tutorials" element={<Tutorials />} />
+        <Route path="/account" element={<Account />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
