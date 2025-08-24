@@ -1,15 +1,14 @@
+
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
 import Button from "../ui/Button";
 import { useCart } from "../../hooks/useCart";
-import CartSidebar from "../cart/CartSidebar";
 
-export default function Header({ onOpenFilters }) {
+export default function Header({ onOpenFilters, onOpenCart }) {
   const [q, setQ] = useState("");
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate();
-  const { cart } = useCart();
+  const { count } = useCart();
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -25,7 +24,6 @@ export default function Header({ onOpenFilters }) {
           BIIB Architects
         </Link>
 
-        {/* Desktop search + filters */}
         <form
           onSubmit={onSearch}
           className="hidden md:flex items-center gap-2 flex-1"
@@ -42,7 +40,6 @@ export default function Header({ onOpenFilters }) {
           </Button>
         </form>
 
-        {/* Desktop navigation */}
         <nav className="ml-auto hidden md:flex items-center gap-5">
           <Link to="/catalog" className="hover:text-brand-600">
             Plans
@@ -57,16 +54,16 @@ export default function Header({ onOpenFilters }) {
             Account
           </Link>
 
-          {/* Cart Button (Sidebar Toggle) */}
+          {/* Cart button */}
           <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative px-3 py-2 rounded-lg border hover:bg-gray-50 flex items-center gap-1"
+            onClick={onOpenCart}
+            className="relative px-3 py-2 rounded-lg border hover:bg-gray-50"
             aria-label="Cart"
           >
             <ShoppingCart className="w-5 h-5" />
-            {cart.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full">
-                {cart.length}
+            {count > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {count}
               </span>
             )}
           </button>
@@ -77,14 +74,11 @@ export default function Header({ onOpenFilters }) {
           <Button variant="outline" onClick={onOpenFilters}>
             Filters
           </Button>
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="btn btn-primary relative"
-          >
+          <button onClick={onOpenCart} className="btn btn-primary relative">
             <ShoppingCart className="w-4 h-4" />
-            {cart.length > 0 && (
+            {count > 0 && (
               <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-xs px-1 py-0.5 rounded-full">
-                {cart.length}
+                {count}
               </span>
             )}
           </button>
@@ -106,9 +100,6 @@ export default function Header({ onOpenFilters }) {
           <Button type="submit">Go</Button>
         </form>
       </div>
-
-      {/* Cart Sidebar */}
-      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 }
