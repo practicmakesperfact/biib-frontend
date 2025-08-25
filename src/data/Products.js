@@ -1,4 +1,3 @@
-// src/data/Products.js
 
 const products = [
   {
