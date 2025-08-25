@@ -2,16 +2,24 @@
 import { useState } from "react";
 import ProductGallery from "../components/product/ProductGallery";
 import LicenseSelector from "../components/product/LicenseSelector";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetail() {
+  const { addToCart } = useCart(); 
+
   const sampleImages = [
     "https://via.placeholder.com/800x600?text=Front+View",
     "https://via.placeholder.com/800x600?text=Side+View",
     "https://via.placeholder.com/800x600?text=Interior",
   ];
 
-  // Base price for product
-  const basePrice = 149;
+  // Example product data
+  const product = {
+    id: 1,
+    title: "Modern House Plan",
+    basePrice: 149,
+    images: sampleImages,
+  };
 
   // License tiers
   const licenses = [
@@ -22,17 +30,29 @@ export default function ProductDetail() {
 
   const [selectedLicense, setSelectedLicense] = useState({
     license: licenses[0],
-    finalPrice: basePrice,
+    finalPrice: product.basePrice,
   });
+
+  // Handle Add to Cart
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: selectedLicense.finalPrice,
+      license: selectedLicense.license.type,
+      img: product.images[0],
+      qty: 1,
+    });
+  };
 
   return (
     <div className="container mx-auto px-6 py-8 grid md:grid-cols-2 gap-10">
       {/* Product Images */}
-      <ProductGallery images={sampleImages} />
+      <ProductGallery images={product.images} />
 
       {/* Product Info */}
       <div>
-        <h1 className="text-2xl font-bold mb-4">Modern House Plan</h1>
+        <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
         <p className="text-gray-600 mb-4">
           This contemporary home features open spaces, large windows, and an
           eco-friendly design.
@@ -41,7 +61,7 @@ export default function ProductDetail() {
         {/* License Selector */}
         <LicenseSelector
           licenses={licenses}
-          basePrice={basePrice}
+          basePrice={product.basePrice}
           onSelect={setSelectedLicense}
         />
 
@@ -51,7 +71,10 @@ export default function ProductDetail() {
         </div>
 
         {/* Add to Cart */}
-        <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow">
+        <button
+          onClick={handleAddToCart}
+          className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow"
+        >
           Add to Cart
         </button>
       </div>
