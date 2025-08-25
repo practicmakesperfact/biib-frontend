@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { X, Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
 import { useCart } from "../../hooks/useCart";
