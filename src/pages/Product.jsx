@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "../hooks/useCart";
-import { api } from "../services/api";
+import  api  from "../services/api";
 import { Loader2, ShoppingCart } from "lucide-react";
 
 export default function Product() {
@@ -24,6 +24,11 @@ export default function Product() {
         setLoading(false);
       });
   }, [id]);
+
+useEffect(() => {
+  api.getProducts().then(setProducts);
+}, []);
+
 
   if (loading) {
     return (

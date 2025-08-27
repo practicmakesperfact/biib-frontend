@@ -1,91 +1,58 @@
 
-// Mock dataset (replace later with real API calls)
+import axios from "axios";
+
+// Toggle between mock data and real API
+const USE_MOCK = true;
+
+// ============ MOCK DATA ============ //
 const mockProducts = [
   {
     id: 1,
     title: "Modern 3-Bedroom House Plan",
     price: 129.0,
-    image: "https://via.placeholder.com/400x300",
-    beds: 3,
-    baths: 2,
-    stories: 2,
-    style: "Modern",
-    sqft: 1800,
+    images: ["/images/house1.jpg", "/images/house1-2.jpg"],
   },
   {
     id: 2,
     title: "Luxury Villa with Pool",
     price: 299.0,
-    image: "https://via.placeholder.com/400x300",
-    beds: 5,
-    baths: 4,
-    stories: 2,
-    style: "Contemporary",
-    sqft: 4200,
+    images: ["/images/house2.jpg", "/images/house2-2.jpg"],
   },
   {
     id: 3,
-    title: "Tiny Cabin",
+    title: "Tiny Cabin Retreat",
     price: 59.0,
-    image: "https://via.placeholder.com/400x300",
-    beds: 1,
-    baths: 1,
-    stories: 1,
-    style: "Rustic",
-    sqft: 600,
+    images: ["/images/house3.jpg", "/images/house3-2.jpg"],
   },
 ];
 
-// Simulated API delay
-const wait = (ms) => new Promise((res) => setTimeout(res, ms));
+// ============ AXIOS INSTANCE ============ //
+const apiClient = axios.create({
+  baseURL: "http://localhost:5000/api", // <-- your backend URL
+  headers: { "Content-Type": "application/json" },
+});
 
-/**
- * Fetch products with optional filters
- * @param {Object} filters
- */
-export async function fetchProducts(filters = {}) {
-  await wait(500); // simulate network
-
-  let results = mockProducts;
-
-  // Apply filters
-  if (filters.query) {
-    results = results.filter((p) =>
-      p.title.toLowerCase().includes(filters.query.toLowerCase())
+// ============ API METHODS ============ //
+async function getProducts() {
+  if (USE_MOCK) {
+    return new Promise(
+      (resolve) => setTimeout(() => resolve(mockProducts), 500) // simulate delay
     );
   }
-
-  if (filters.style) {
-    results = results.filter((p) => p.style === filters.style);
-  }
-
-  if (filters.beds) {
-    results = results.filter((p) => p.beds >= Number(filters.beds));
-  }
-
-  if (filters.baths) {
-    results = results.filter((p) => p.baths >= Number(filters.baths));
-  }
-
-  if (filters.stories) {
-    results = results.filter((p) => p.stories === Number(filters.stories));
-  }
-
-  if (filters.priceMin) {
-    results = results.filter((p) => p.price >= Number(filters.priceMin));
-  }
-
-  if (filters.priceMax) {
-    results = results.filter((p) => p.price <= Number(filters.priceMax));
-  }
-
-  if (filters.sqftMin) {
-    results = results.filter((p) => p.sqft >= Number(filters.sqftMin));
-  }
-
-  if (filters.sqftMax) {
-    results = results.filter((p) => p.sqft <= Number(filters.sqftMax));
-  }
-
-  return results;
+  const res = await apiClient.get("/products");
+  return res.data;
 }
+
+async function getProductById(id) {
+  if (USE_MOCK) {
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockProducts.find((p) => p.id === id)), 300)
+    );
+  }
+  const res = await apiClient.get(`/products/${id}`);
+  return res.data;
+}
+
+// Export all as default object
+const api = { getProducts, getProductById };
+export default api;
