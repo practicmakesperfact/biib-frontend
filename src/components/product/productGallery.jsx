@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
 
 export default function ProductGallery({ images }) {
   const [selected, setSelected] = useState(images[0]);
   const [isZoomed, setIsZoomed] = useState(false);
+
+  // Close modal with ESC
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") setIsZoomed(false);
+    };
+    if (isZoomed) {
+      document.addEventListener("keydown", handleKey);
+    }
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [isZoomed]);
 
   return (
     <div className="w-full">
@@ -43,11 +55,21 @@ export default function ProductGallery({ images }) {
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={() => setIsZoomed(false)}
         >
-          <img
-            src={selected}
-            alt="Zoomed plan"
-            className="max-w-4xl max-h-[90vh] object-contain"
-          />
+          {/* Stop click propagation inside modal */}
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setIsZoomed(false)}
+              className="absolute top-3 right-3 bg-white rounded-full p-1 shadow"
+              aria-label="Close zoom"
+            >
+              <X className="w-6 h-6 text-gray-700" />
+            </button>
+            <img
+              src={selected}
+              alt="Zoomed plan"
+              className="max-w-4xl max-h-[90vh] object-contain"
+            />
+          </div>
         </div>
       )}
     </div>
