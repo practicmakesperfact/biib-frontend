@@ -1,14 +1,16 @@
-import { useState } from "react";
 
-export function useCart() {
+import { createContext, useContext, useState } from "react";
+
+// Create Context
+const CartContext = createContext();
+
+export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
 
-  // Add product (with default quantity 1)
   const addToCart = (product) => {
     setItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
-        // If already in cart, just increase quantity
         return prev.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -19,12 +21,10 @@ export function useCart() {
     });
   };
 
-  // Remove product completely
   const removeFromCart = (id) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Update quantity of a product
   const updateQuantity = (id, qty) => {
     if (qty < 1) return;
     setItems((prev) =>
@@ -32,21 +32,29 @@ export function useCart() {
     );
   };
 
-  // Clear all products
   const clearCart = () => setItems([]);
 
-  // Calculate subtotal
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
-  return {
-    items,
-    subtotal,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    clearCart,
-  };
+  return (
+    <CartContext.Provider
+      value={{
+        items,
+        subtotal,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+export function useCart() {
+  return useContext(CartContext);
 }
