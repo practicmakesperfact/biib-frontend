@@ -7,8 +7,8 @@ import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
-// import Services from "./pages/Services";
-// import Tutorials from "./pages/Tutorials";
+import Services from "./pages/Services";
+import Tutorials from "./pages/Tutorials";
 import Account from "./pages/Account";
 
 export default function App() {

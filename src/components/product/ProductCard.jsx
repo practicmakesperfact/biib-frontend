@@ -12,7 +12,7 @@ export default function ProductCard({ product }) {
       {/* Image */}
       <div className="relative">
         <img
-          src={product.image}
+          src={product.img}
           alt={product.title}
           className="w-full h-48 object-cover"
         />
@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
 
         <div className="mt-3 flex items-center justify-between">
           <span className="text-xl font-bold text-blue-600">
-            ${product.price.toFixed(2)}
+            ${product.basePrice.toFixed(2)}
           </span>
           {/*  updated button with addToCart */}
           <button
