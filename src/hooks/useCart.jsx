@@ -1,12 +1,13 @@
-
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 
 // Create Context
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false); // sidebar state
 
+  // Add to cart
   const addToCart = (product) => {
     setItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
@@ -21,10 +22,12 @@ export function CartProvider({ children }) {
     });
   };
 
+  // Remove from cart
   const removeFromCart = (id) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
+  // Update quantity
   const updateQuantity = (id, qty) => {
     if (qty < 1) return;
     setItems((prev) =>
@@ -32,11 +35,23 @@ export function CartProvider({ children }) {
     );
   };
 
+  // Clear cart
   const clearCart = () => setItems([]);
 
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
+  // Open/close sidebar
+  const toggleCartSidebar = () => setIsCartOpen((prev) => !prev);
+
+  // Check if product exists
+  const isInCart = (id) => items.some((item) => item.id === id);
+
+  // Get total item count
+  const getCartCount = () =>
+    items.reduce((count, item) => count + item.quantity, 0);
+
+  // Calculate subtotal
+  const subtotal = useMemo(
+    () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [items]
   );
 
   return (
@@ -48,6 +63,10 @@ export function CartProvider({ children }) {
         removeFromCart,
         updateQuantity,
         clearCart,
+        toggleCartSidebar,
+        isCartOpen,
+        isInCart,
+        getCartCount,
       }}
     >
       {children}

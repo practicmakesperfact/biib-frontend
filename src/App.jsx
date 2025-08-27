@@ -10,6 +10,7 @@ import Checkout from "./pages/Checkout";
 import Services from "./pages/Services";
 import Tutorials from "./pages/Tutorials";
 import Account from "./pages/Account";
+import ProductDetail from "./pages/ProductDetail";
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/product/:id" element={<Product />} />
+        <Route path="/product/:id" element={ProductDetail } />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/services" element={<Services />} />
         <Route path="/tutorials" element={<Tutorials />} />
@@ -26,3 +27,4 @@ export default function App() {
     </Routes>
   );
 }
+App.jsx

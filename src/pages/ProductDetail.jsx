@@ -1,27 +1,17 @@
-
-import { useState } from "react";
+import { useParams } from "react-router-dom";
+import products from "../data/Products";
 import ProductGallery from "../components/product/ProductGallery";
 import LicenseSelector from "../components/product/LicenseSelector";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
+import { useState } from "react";
 
 export default function ProductDetail() {
-  const { addToCart } = useCart(); 
+  const { id } = useParams();
+  const { addToCart } = useCart();
 
-  const sampleImages = [
-    "https://via.placeholder.com/800x600?text=Front+View",
-    "https://via.placeholder.com/800x600?text=Side+View",
-    "https://via.placeholder.com/800x600?text=Interior",
-  ];
+  const product = products.find((p) => p.id === parseInt(id));
+  if (!product) return <p>Product not found.</p>;
 
-  // Example product data
-  const product = {
-    id: 1,
-    title: "Modern House Plan",
-    basePrice: 149,
-    images: sampleImages,
-  };
-
-  // License tiers
   const licenses = [
     { type: "Personal Use", multiplier: 1 },
     { type: "Commercial", multiplier: 1.5 },
@@ -33,44 +23,34 @@ export default function ProductDetail() {
     finalPrice: product.basePrice,
   });
 
-  // Handle Add to Cart
   const handleAddToCart = () => {
     addToCart({
       id: product.id,
       title: product.title,
       price: selectedLicense.finalPrice,
       license: selectedLicense.license.type,
-      img: product.images[0],
-      qty: 1,
+      img: product.img,
     });
   };
 
   return (
     <div className="container mx-auto px-6 py-8 grid md:grid-cols-2 gap-10">
-      {/* Product Images */}
       <ProductGallery images={product.images} />
 
-      {/* Product Info */}
       <div>
         <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
-        <p className="text-gray-600 mb-4">
-          This contemporary home features open spaces, large windows, and an
-          eco-friendly design.
-        </p>
+        <p className="text-gray-600 mb-4">{product.description}</p>
 
-        {/* License Selector */}
         <LicenseSelector
           licenses={licenses}
           basePrice={product.basePrice}
           onSelect={setSelectedLicense}
         />
 
-        {/* Dynamic Price */}
         <div className="text-xl font-bold text-blue-600 mt-4">
           ${selectedLicense.finalPrice}
         </div>
 
-        {/* Add to Cart */}
         <button
           onClick={handleAddToCart}
           className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow"

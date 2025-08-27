@@ -25,9 +25,9 @@ export default function Product() {
       });
   }, [id]);
 
-useEffect(() => {
-  api.getProducts().then(setProducts);
-}, []);
+// useEffect(() => {
+//   api.getProducts().then(setProducts);
+// }, []);
 
 
   if (loading) {
