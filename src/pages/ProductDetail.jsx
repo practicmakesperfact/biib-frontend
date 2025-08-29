@@ -29,7 +29,7 @@
 //       title: product.title,
 //       price: selectedLicense.finalPrice,
 //       license: selectedLicense.license.type,
-//       img: product.img,
+//       img: product.images,
 //     });
 //   };
 

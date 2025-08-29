@@ -41,13 +41,7 @@ export default function ProductCard({ product }) {
           <span className="text-xl font-bold text-blue-600">
             ${product.basePrice.toFixed(2)}
           </span>
-          {/*  updated button with addToCart */}
-          {/* <button
-            onClick={() => addToCart(product)}
-            className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700"
-          >
-            <ShoppingCart className="w-5 h-5" />
-          </button> */}
+          
           <button
             onClick={() =>
               addToCart({

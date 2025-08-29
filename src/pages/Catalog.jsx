@@ -9,14 +9,14 @@ import api from "../services/api";
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Fetch products whenever filters change
   // useEffect(() => {
   //   setLoading(true);
   //   fetchProducts(filters).then((res) => {
   //     setProducts(res);
-  //     setLoading(false);
+  //     setLoading(true);
   //   });
   // }, [filters]);
 
