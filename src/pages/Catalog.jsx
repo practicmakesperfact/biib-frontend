@@ -1,27 +1,18 @@
-
 import { useEffect, useState } from "react";
 import { SearchBar } from "@/components/search/SearchBar";
 import { FiltersPanel } from "@/components/search/FiltersPanel";
-import  ProductCard  from "@/components/product/ProductCard";
-// import { fetchProducts } from "@/services/api";
-import api from "../services/api";
+import ProductCard from "@/components/product/ProductCard";
+import productsData from "../data/products"; // <-- import local products.js
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
 
-  // Fetch products whenever filters change
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetchProducts(filters).then((res) => {
-  //     setProducts(res);
-  //     setLoading(true);
-  //   });
-  // }, [filters]);
-
+  // Load products from local file
   useEffect(() => {
-    api.getProducts().then(setProducts);
+    setProducts(productsData); // load from data/products.js
+    setLoading(false); // stop loading
   }, []);
 
   return (
