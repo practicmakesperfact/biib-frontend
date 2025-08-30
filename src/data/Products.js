@@ -1,4 +1,3 @@
-
 const products = [
   {
     id: 1,
@@ -19,6 +18,8 @@ const products = [
       { id: "extended", name: "Extended", price: 249 },
       { id: "commercial", name: "Commercial", price: 399 },
     ],
+    hasVideo: true,
+    hasTour: true,
   },
   {
     id: 2,
@@ -38,6 +39,8 @@ const products = [
       { id: "extended", name: "Extended", price: 199 },
       { id: "commercial", name: "Commercial", price: 329 },
     ],
+    hasVideo: false,
+    hasTour: true,
   },
   {
     id: 3,
@@ -58,6 +61,8 @@ const products = [
       { id: "extended", name: "Extended", price: 399 },
       { id: "commercial", name: "Commercial", price: 599 },
     ],
+    hasVideo: true,
+    hasTour: false,
   },
   {
     id: 4,
@@ -77,6 +82,8 @@ const products = [
       { id: "extended", name: "Extended", price: 149 },
       { id: "commercial", name: "Commercial", price: 249 },
     ],
+    hasVideo: false,
+    hasTour: false,
   },
   {
     id: 5,
@@ -96,6 +103,8 @@ const products = [
       { id: "extended", name: "Extended", price: 259 },
       { id: "commercial", name: "Commercial", price: 399 },
     ],
+    hasVideo: true,
+    hasTour: true,
   },
   {
     id: 6,
@@ -115,6 +124,8 @@ const products = [
       { id: "extended", name: "Extended", price: 299 },
       { id: "commercial", name: "Commercial", price: 459 },
     ],
+    hasVideo: false,
+    hasTour: true,
   },
 ];
 

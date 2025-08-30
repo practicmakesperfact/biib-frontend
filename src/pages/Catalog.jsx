@@ -2,18 +2,28 @@ import { useEffect, useState } from "react";
 import { SearchBar } from "@/components/search/SearchBar";
 import { FiltersPanel } from "@/components/search/FiltersPanel";
 import ProductCard from "@/components/product/ProductCard";
-import productsData from "../data/products"; // <-- import local products.js
+import productsData from "@/data/products"; // <-- import local products
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
 
-  // Load products from local file
-  useEffect(() => {
-    setProducts(productsData); // load from data/products.js
-    setLoading(false); // stop loading
-  }, []);
+useEffect(() => {
+  setLoading(true);
+  setTimeout(() => {
+    let filtered = productsData;
+
+    if (filters.query) {
+      filtered = filtered.filter((p) =>
+        p.title.toLowerCase().includes(filters.query.toLowerCase())
+      );
+    }
+
+    setProducts(filtered);
+    setLoading(false);
+  }, 500);
+}, [filters]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -31,9 +41,7 @@ export default function Catalog() {
       {loading ? (
         <p className="text-gray-500">Loading products...</p>
       ) : products.length === 0 ? (
-        <p className="text-gray-500">
-          No results found. Try adjusting filters.
-        </p>
+        <p className="text-gray-500">No results found. Try adjusting filters.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
