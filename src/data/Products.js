@@ -24,6 +24,8 @@ const products = [
     createdAt: "2025-09-20",
     salesCount: 245,
     isStaffPick: true,
+    reviewsCount: 18,
+    floors: 2,
   },
   {
     id: 2,
@@ -121,6 +123,8 @@ const products = [
     createdAt: "2025-09-25",
     salesCount: 180,
     isStaffPick: true,
+    reviewsCount: 18,
+    floors: 2,
   },
   {
     id: 6,
