@@ -3,6 +3,7 @@ const products = [
     id: 1,
     title: "Modern Courtyard Home",
     basePrice: 149,
+    salePrice: 129, // 💰 discounted price
     sqft: 2500,
     beds: 3,
     baths: 2.5,
@@ -20,6 +21,9 @@ const products = [
     ],
     hasVideo: true,
     hasTour: true,
+    createdAt: "2025-09-20",
+    salesCount: 245,
+    isStaffPick: true,
   },
   {
     id: 2,
@@ -41,6 +45,9 @@ const products = [
     ],
     hasVideo: false,
     hasTour: true,
+    createdAt: "2025-08-28",
+    salesCount: 110,
+    isStaffPick: false,
   },
   {
     id: 3,
@@ -63,6 +70,9 @@ const products = [
     ],
     hasVideo: true,
     hasTour: false,
+    createdAt: "2025-10-02",
+    salesCount: 320,
+    isStaffPick: true,
   },
   {
     id: 4,
@@ -84,6 +94,9 @@ const products = [
     ],
     hasVideo: false,
     hasTour: false,
+    createdAt: "2025-07-15",
+    salesCount: 85,
+    isStaffPick: false,
   },
   {
     id: 5,
@@ -105,6 +118,9 @@ const products = [
     ],
     hasVideo: true,
     hasTour: true,
+    createdAt: "2025-09-25",
+    salesCount: 180,
+    isStaffPick: true,
   },
   {
     id: 6,
@@ -126,6 +142,9 @@ const products = [
     ],
     hasVideo: false,
     hasTour: true,
+    createdAt: "2025-08-10",
+    salesCount: 150,
+    isStaffPick: false,
   },
 ];
 

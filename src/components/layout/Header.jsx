@@ -42,7 +42,7 @@ export default function Header({ onOpenFilters, onOpenCart }) {
 
         <nav className="ml-auto hidden md:flex items-center gap-5">
           <Link to="/catalog" className="hover:text-brand-600">
-            Plans
+            Catalog
           </Link>
           <Link to="/services" className="hover:text-brand-600">
             Services
