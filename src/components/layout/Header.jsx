@@ -35,9 +35,7 @@ export default function Header({ onOpenFilters, onOpenCart }) {
             className="input"
           />
           <Button type="submit">Search</Button>
-          <Button type="button" variant="outline" onClick={onOpenFilters}>
-            Filters
-          </Button>
+         
         </form>
 
         <nav className="ml-auto hidden md:flex items-center gap-5">
