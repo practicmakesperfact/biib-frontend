@@ -1,6 +1,10 @@
 
-export function currencyFormat(amount, currency = "USD", locale = "en-US") {
-  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(
-    amount || 0
-  );
+
+
+export function currencyFormat(amount, currency = "USD") {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+  }).format(amount);
 }
