@@ -69,7 +69,10 @@ export default function ProductDetail() {
     <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10 ">
       {/* Left: Gallery */}
       <div>
-        <ProductGallery images={product.images || [product.img]} />
+        {/* <ProductGallery images={product.images || [product.img]} /> */}
+        <ProductGallery
+          images={product.images?.length ? product.images : [product.img]}
+        />
 
         {/* sample preview */}
         <div className="mt-6">
@@ -82,7 +85,6 @@ export default function ProductDetail() {
           <div className="mt-6">
             <h3 className="text-lg font-semibold mb-2">
               Tutorial / Walkthrough
-             
             </h3>
             <div className="aspect-w-16 aspect-h-9">
               <iframe
@@ -304,7 +306,7 @@ export default function ProductDetail() {
                 />
               </div>
               <div className="mb-3">
-                <label className="block text-sm text-gray-700 mb-1" >
+                <label className="block text-sm text-gray-700 mb-1">
                   Budget (optional)
                 </label>
                 <input
@@ -316,7 +318,10 @@ export default function ProductDetail() {
                 <label className="block text-sm text-gray-700 mb-1">
                   Attach reference file
                 </label>
-                <input type="file" className="w-50 outline-none text-gray-400" />
+                <input
+                  type="file"
+                  className="w-50 outline-none text-gray-400"
+                />
               </div>
 
               <div className="flex justify-end gap-3">
