@@ -3,16 +3,16 @@ const products = [
     id: 1,
     title: "Modern Courtyard Home",
     basePrice: 149,
-    salePrice: 129, // 💰 discounted price
+    salePrice: 129,
     sqft: 2500,
     beds: 3,
     baths: 2.5,
     floors: 2,
-    img: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600",
     images: [
-      "https://via.placeholder.com/800x600?text=Front+View",
-      "https://via.placeholder.com/800x600?text=Side+View",
-      "https://via.placeholder.com/800x600?text=Interior",
+      "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=800", // Front
+      "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800", // Side
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800", // Interior
     ],
     licenses: [
       { id: "basic", name: "Basic", price: 149 },
@@ -25,7 +25,6 @@ const products = [
     salesCount: 245,
     isStaffPick: true,
     reviewsCount: 18,
-    floors: 2,
   },
   {
     id: 2,
@@ -35,10 +34,10 @@ const products = [
     beds: 3,
     baths: 2,
     floors: 1,
-    img: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.pexels.com/photos/259597/pexels-photo-259597.jpeg?auto=compress&cs=tinysrgb&w=1600",
     images: [
-      "https://via.placeholder.com/800x600?text=Front+View",
-      "https://via.placeholder.com/800x600?text=Living+Room",
+      "https://images.pexels.com/photos/259597/pexels-photo-259597.jpeg?auto=compress&cs=tinysrgb&w=800", // Front
+      "https://images.pexels.com/photos/271805/pexels-photo-271805.jpeg?auto=compress&cs=tinysrgb&w=800", // Living Room
     ],
     licenses: [
       { id: "basic", name: "Basic", price: 119 },
@@ -59,11 +58,11 @@ const products = [
     beds: 5,
     baths: 4,
     floors: 2,
-    img: "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1600",
     images: [
-      "https://via.placeholder.com/800x600?text=Front+View",
-      "https://via.placeholder.com/800x600?text=Balcony",
-      "https://via.placeholder.com/800x600?text=Interior",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800", // Front
+      "https://images.pexels.com/photos/259593/pexels-photo-259593.jpeg?auto=compress&cs=tinysrgb&w=800", // Balcony
+      "https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=800", // Interior
     ],
     licenses: [
       { id: "basic", name: "Basic", price: 279 },
@@ -84,10 +83,10 @@ const products = [
     beds: 1,
     baths: 1,
     floors: 1,
-    img: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1600",
     images: [
-      "https://via.placeholder.com/800x600?text=Front+View",
-      "https://via.placeholder.com/800x600?text=Kitchen",
+      "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=800", // Front
+      "https://images.pexels.com/photos/271815/pexels-photo-271815.jpeg?auto=compress&cs=tinysrgb&w=800", // Kitchen
     ],
     licenses: [
       { id: "basic", name: "Basic", price: 89 },
@@ -108,10 +107,10 @@ const products = [
     beds: 4,
     baths: 3,
     floors: 2,
-    img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1600",
     images: [
-      "https://via.placeholder.com/800x600?text=Front+View",
-      "https://via.placeholder.com/800x600?text=Backyard",
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800", // Front
+      "https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=800", // Backyard
     ],
     licenses: [
       { id: "basic", name: "Basic", price: 169 },
@@ -124,7 +123,6 @@ const products = [
     salesCount: 180,
     isStaffPick: true,
     reviewsCount: 18,
-    floors: 2,
   },
   {
     id: 6,
@@ -134,10 +132,10 @@ const products = [
     beds: 3,
     baths: 2,
     floors: 2,
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.pexels.com/photos/259600/pexels-photo-259600.jpeg?auto=compress&cs=tinysrgb&w=1600",
     images: [
-      "https://via.placeholder.com/800x600?text=Front+View",
-      "https://via.placeholder.com/800x600?text=Interior",
+      "https://images.pexels.com/photos/259600/pexels-photo-259600.jpeg?auto=compress&cs=tinysrgb&w=800", // Front
+      "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=800", // Interior
     ],
     licenses: [
       { id: "basic", name: "Basic", price: 199 },
