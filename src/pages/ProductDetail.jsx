@@ -37,13 +37,13 @@ export default function ProductDetail() {
   const [modRequestOpen, setModRequestOpen] = useState(false);
 
   // currency conversion (demo rates, replace with real API)
-  const rates = { USD: 1, EUR: 0.93, ETB: 55.5 };
+  const { rates, loading, error } = useCurrencyRates("USD");
   
   const price = useMemo(() => {
     const base = selectedLicense?.price ?? product.basePrice ?? 0;
     const converted = base * (rates[currency] || 1) * qty;
     return converted;
-  }, [selectedLicense, product.basePrice, currency, qty]);
+  }, [selectedLicense, product.basePrice, currency, qty, rates]);
 
   function handleAddToCart() {
     addToCart({
@@ -315,7 +315,7 @@ export default function ProductDetail() {
                 />
               </div>
               <div className="mb-3">
-                <label className="block text-sm text-gray-700 mb-1">
+                <label className="block text-sm text-gray-600 mb-1">
                   Attach reference file
                 </label>
                 <input
