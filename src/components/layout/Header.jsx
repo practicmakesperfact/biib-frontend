@@ -1,9 +1,10 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart,Heart } from "lucide-react";
 import Button from "../ui/Button";
 import { useCart } from "../../hooks/useCart";
+import { useFavorites } from "../../hooks/useFavorites";
 
 export default function Header({ onOpenFilters, onOpenCart }) {
   const [q, setQ] = useState("");
@@ -11,6 +12,7 @@ export default function Header({ onOpenFilters, onOpenCart }) {
   // const { count } = useCart();
  const { getCartCount } = useCart();
  const count = getCartCount();
+  const { favorites } = useFavorites();
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -52,10 +54,23 @@ export default function Header({ onOpenFilters, onOpenCart }) {
           <Link to="/account" className="hover:text-brand-600">
             Account
           </Link>
+          {/* ❤️ Favorites Button */}
+          <Link
+            to="/favorites"
+            className="relative px-3 py-2 rounded-lg border hover:bg-gray-50"
+            aria-label="Favorites"
+          >
+            <Heart className="w-6 h-6" />
+            {favorites.length > 0 && (
+              <span className="absolute -top-0 -right-0 bg-pink-400 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {favorites.length}
+              </span>
+            )}
+          </Link>
 
           {/* Cart button */}
           <button
-            onClick={onOpenCart} 
+            onClick={onOpenCart}
             className="relative px-3 py-2 rounded-lg border hover:bg-gray-50"
             aria-label="Cart"
           >

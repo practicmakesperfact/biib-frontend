@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, X, Star } from "lucide-react";
 import { useCart } from "../../hooks/useCart";
+import { useFavorites } from "../../hooks/useFavorites";
 
 export default function ProductCard({ product, view = "grid" }) {
   const { addToCart } = useCart();
   const [isFav, setIsFav] = useState(!!product.isFavorite);
   const [showTour, setShowTour] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   // ✅ Safe price formatting
   const priceLabel =
@@ -111,16 +113,19 @@ export default function ProductCard({ product, view = "grid" }) {
           </div>
 
           {/* ✅ Heart (Favorite) - top-right */}
+
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setIsFav((s) => !s);
+              toggleFavorite(product); 
             }}
-            aria-pressed={isFav}
-            title={isFav ? "Remove favorite" : "Add to favorites"}
+            aria-pressed={isFavorite(product.id)}
+            title={
+              isFavorite(product.id) ? "Remove favorite" : "Add to favorites"
+            }
             className="absolute top-3 right-3 bg-white/90 rounded-full p-2 shadow hover:bg-white z-20"
           >
-            {isFav ? (
+            {isFavorite(product.id) ? (
               <svg
                 className="w-5 h-5 text-red-500"
                 viewBox="0 0 24 24"
