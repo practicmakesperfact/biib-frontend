@@ -20,14 +20,14 @@ export default function Checkout() {
           href="/catalog"
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
         >
-          Browse Catalog
+          Browse Catalog 
         </a>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-12 grid md:grid-cols-2 gap-8">
+    <div className="max-w-6xl mx-auto py-18 grid md:grid-cols-2 gap-8">
       {/* Checkout Form */}
       <form
         onSubmit={handleSubmit}
@@ -40,7 +40,7 @@ export default function Checkout() {
           <input
             type="text"
             required
-            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500"
+            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
           />
         </div>
 
@@ -49,17 +49,17 @@ export default function Checkout() {
           <input
             type="email"
             required
-            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500"
+            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">
+          <label className="block text-sm font-medium mb-2">
             Payment Method
           </label>
           <select
             required
-            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500"
+            className="w-full border rounded-lg px-4 py-2 outline-none"
           >
             <option value="card">Credit / Debit Card</option>
             <option value="chapa">Chapa (Ethiopia)</option>
@@ -69,7 +69,7 @@ export default function Checkout() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+          className="mt-20 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
         >
           Place Order
         </button>
