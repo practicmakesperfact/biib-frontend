@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import Tutorials from "./pages/Tutorials";
 import Account from "./pages/Account";
 import ProductDetail from "./pages/ProductDetail";
+import Favorites from "./pages/Favorites";
 
 export default function App() {
   return (
@@ -18,11 +19,12 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/product/:id" element={<ProductDetail /> } />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/services" element={<Services />} />
         <Route path="/tutorials" element={<Tutorials />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );
