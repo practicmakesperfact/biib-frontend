@@ -56,7 +56,7 @@ export default function CartSidebar({ isOpen, onClose }) {
                     {item.title}
                   </h3>
                   <p className="text-xs text-gray-500">
-                    {currencyFormat(item.price)}
+                    {currencyFormat(item.price *item.quantity)}
                   </p>
 
                   {/* qty controls */}

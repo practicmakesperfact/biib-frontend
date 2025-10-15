@@ -9,7 +9,9 @@ export default function CartItem({ item }) {
       {/* Left: title */}
       <div>
         <h4 className="font-medium">{item.title}</h4>
-        <p className="text-sm text-gray-500">${item.price.toFixed(2)}</p>
+        <p className="text-sm text-gray-500">
+          ${(item.price * item.quantity).toFixed(2)}
+        </p>
       </div>
 
       {/* Middle: quantity controls */}
