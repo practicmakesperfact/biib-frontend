@@ -186,23 +186,6 @@ export default function ProductCard({ product, view = "grid" }) {
               </span>
             )}
           </div>
-
-          {/* Add to cart */}
-          <button
-            onClick={() =>
-              addToCart({
-                id: product.id,
-                title: product.title,
-                price: Number(product.basePrice) || 0,
-                img: product.img,
-                quantity: 1,
-              })
-            }
-            className="mt-3 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 flex items-center justify-center gap-1"
-          >
-            <ShoppingCart className="w-5 h-5" />
-            <span>Add to Cart</span>
-          </button>
         </div>
       </div>
 
