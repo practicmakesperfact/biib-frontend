@@ -47,7 +47,7 @@ export default function CartSidebar({ isOpen, onClose }) {
                 className="flex items-center gap-3 border rounded-lg p-2"
               >
                 <img
-                  src={item.image}
+                  src={item.img}
                   alt={item.title}
                   className="w-16 h-16 object-cover rounded"
                 />

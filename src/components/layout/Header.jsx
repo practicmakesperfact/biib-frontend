@@ -8,7 +8,9 @@ import { useCart } from "../../hooks/useCart";
 export default function Header({ onOpenFilters, onOpenCart }) {
   const [q, setQ] = useState("");
   const navigate = useNavigate();
-  const { count } = useCart();
+  // const { count } = useCart();
+ const { getCartCount } = useCart();
+ const count = getCartCount();
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -35,7 +37,6 @@ export default function Header({ onOpenFilters, onOpenCart }) {
             className="input"
           />
           <Button type="submit">Search</Button>
-         
         </form>
 
         <nav className="ml-auto hidden md:flex items-center gap-5">
@@ -54,16 +55,14 @@ export default function Header({ onOpenFilters, onOpenCart }) {
 
           {/* Cart button */}
           <button
-            onClick={onOpenCart}
+            onClick={onOpenCart} 
             className="relative px-3 py-2 rounded-lg border hover:bg-gray-50"
             aria-label="Cart"
           >
-            <ShoppingCart className="w-5 h-5" />
-            {count > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                {count}
-              </span>
-            )}
+            <ShoppingCart className="w-7 h-5" />
+            <span className="absolute -top-0 -right-0 bg-green-300 text-black text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {count}
+            </span>
           </button>
         </nav>
 
