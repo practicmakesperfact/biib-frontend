@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useFavorites } from "../hooks/useFavorites";
 
 export default function Favorites() {
@@ -20,12 +21,18 @@ export default function Favorites() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {favorites.map((product) => (
           <div key={product.id} className="border rounded-lg p-4 relative">
-            <img
-              src={product.img}
-              alt={product.title}
-              className="w-full h-48 object-cover rounded"
-            />
-            <h3 className="mt-2 font-medium">{product.title}</h3>
+            <Link to={`/product/${product.id}`} className="block">
+              <img
+                src={product.img}
+                alt={product.title}
+                className="w-full h-48 object-cover group-hover:opacity-90 transition"
+              />
+              <div className="p-3">
+                <h3 className="text-sm font-medium line-clamp-2">
+                  {product.title}
+                </h3>
+              </div>
+            </Link>
             <button
               onClick={() => removeFavorite(product.id)}
               className="absolute top-2 right-2 bg-white rounded-full p-1 shadow text-red-500 hover:text-red-700"
