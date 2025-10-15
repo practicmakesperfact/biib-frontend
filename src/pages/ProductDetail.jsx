@@ -56,14 +56,18 @@ export default function ProductDetail() {
     });
   }
 
-  function handleBuyNow() {
-    // push to checkout page with product in state (Checkout page should read this state or backend)
-    navigate("/checkout", {
-      state: {
-        items: [{ ...product, license: selectedLicense, quantity: qty }],
-      },
-    });
-  }
+ function handleBuyNow() {
+   addToCart({
+     id: product.id,
+     title: product.title,
+     price: selectedLicense?.price ?? product.basePrice,
+     img: product.img,
+     quantity: qty,
+     license: selectedLicense?.id || "basic",
+   });
+   navigate("/checkout");
+ }
+
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10 ">

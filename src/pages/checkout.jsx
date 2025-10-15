@@ -3,7 +3,7 @@ import CheckoutSummary from "../components/cart/CheckoutSummary";
 import { useCart } from "../hooks/useCart";
 
 export default function Checkout() {
-  const { cart, clearCart } = useCart();
+  const { items, clearCart } = useCart();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ export default function Checkout() {
     clearCart();
   };
 
-  if (cart.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="max-w-4xl mx-auto py-16 text-center">
         <h1 className="text-2xl font-semibold mb-4">Your cart is empty</h1>
