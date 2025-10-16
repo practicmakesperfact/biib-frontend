@@ -81,8 +81,8 @@ export default function ProductDetail() {
         {/* sample preview */}
         <div className="mt-6">
           <h3 className="text-lg font-semibold mb-2">Sample Preview</h3>
-          <SamplePreview url={product.samplePdf || product.sample || ""} />
-        </div>
+          {/* <SamplePreview url={product.samplePdf || product.sample || ""} /> */}
+        </div> 
 
         {/* Video / Tour / YouTube */}
         {product.youtubeUrl && (
@@ -90,10 +90,10 @@ export default function ProductDetail() {
             <h3 className="text-lg font-semibold mb-2">
               Tutorial / Walkthrough
             </h3>
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="aspect-video">
               <iframe
                 title="product-tutorial"
-                src={product.youtubeUrl}
+                src={product.youtubeUrl.replace("watch?v=", "embed/")}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full rounded"

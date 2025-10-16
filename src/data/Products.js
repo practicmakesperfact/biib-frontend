@@ -93,7 +93,7 @@ const products = [
       { id: "extended", name: "Extended", price: 149 },
       { id: "commercial", name: "Commercial", price: 249 },
     ],
-    hasVideo: false,
+    hasVideo: true,
     hasTour: false,
     createdAt: "2025-07-15",
     salesCount: 85,
