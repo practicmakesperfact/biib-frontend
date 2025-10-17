@@ -23,6 +23,10 @@ export default function Footer() {
           <Link to="/tutorials" className="hover:text-white">
             Tutorials
           </Link>
+          <Link to="/resources" className="hover:text-white">
+            Resources
+          </Link>
+
           <Link to="/account" className="hover:text-white">
             Account
           </Link>

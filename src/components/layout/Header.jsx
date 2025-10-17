@@ -51,6 +51,9 @@ export default function Header({ onOpenFilters, onOpenCart }) {
           <Link to="/tutorials" className="hover:text-brand-600">
             Tutorials
           </Link>
+          <Link to="/resources" className="hover:text-brand-600">
+            Resources
+          </Link>
           <Link to="/account" className="hover:text-brand-600">
             Account
           </Link>

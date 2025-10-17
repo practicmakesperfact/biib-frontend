@@ -13,6 +13,7 @@ import Tutorials from "./pages/Tutorials";
 import Account from "./pages/Account";
 import ProductDetail from "./pages/ProductDetail";
 import Favorites from "./pages/Favorites";
+import Resources from "./pages/Resources";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/tutorials" element={<Tutorials />} />
         <Route path="/account" element={<Account />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/resources" element={<Resources />} />"
       </Route>
     </Routes>
   );
