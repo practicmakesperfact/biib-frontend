@@ -8,6 +8,7 @@ import Catalog from "./pages/Catalog";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
 import Services from "./pages/Services";
+import RequestQuote from "./pages/RequestQuote";
 import Tutorials from "./pages/Tutorials";
 import Account from "./pages/Account";
 import ProductDetail from "./pages/ProductDetail";
@@ -22,6 +23,10 @@ export default function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/services" element={<Services />} />
+        <Route
+          path="/services/request-quote/:serviceId"
+          element={<RequestQuote />}
+        />
         <Route path="/tutorials" element={<Tutorials />} />
         <Route path="/account" element={<Account />} />
         <Route path="/favorites" element={<Favorites />} />
