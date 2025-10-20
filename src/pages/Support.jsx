@@ -5,7 +5,7 @@ export default function Support() {
   const [partners, setPartners] = useState([]);
   const [caseStudies, setCaseStudies] = useState([]);
 
-  // 🟨 Later: Replace with real fetch from backend
+  //Later: Replace with real fetch from backend
   useEffect(() => {
     setTestimonials([
       {
@@ -78,7 +78,7 @@ export default function Support() {
         </div>
       </section>
 
-      {/* 🟨 Partners */}
+      {/*Partners */}
       <section>
         <h2 className="text-2xl font-bold mb-4">Our Partners</h2>
         <div className="flex flex-wrap gap-6 items-center justify-center">
@@ -90,7 +90,7 @@ export default function Support() {
         </div>
       </section>
 
-      {/* 📰 Case Studies */}
+      {/* Case Studies */}
       <section>
         <h2 className="text-2xl font-bold mb-4">Case Studies & Press</h2>
         <div className="grid md:grid-cols-2 gap-8">
@@ -109,7 +109,7 @@ export default function Support() {
         </div>
       </section>
 
-      {/* 📩 Contact Form */}
+      {/*Contact Form */}
       <section>
         <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
         <form className="grid gap-4 max-w-md">

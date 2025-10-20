@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 // Toggle between mock data and real API
@@ -28,7 +27,7 @@ const mockProducts = [
 
 // ============ AXIOS INSTANCE ============ //
 const apiClient = axios.create({
-  baseURL: "http://localhost:5000/api", // <-- your backend URL
+  baseURL: "http://127.0.0.1:8000/api/v1", // Updated to match Django backend
   headers: { "Content-Type": "application/json" },
 });
 
@@ -53,6 +52,37 @@ async function getProductById(id) {
   return res.data;
 }
 
+// ============ SUPPORT & TRUST SIGNALS API ============ //
+async function fetchTestimonials() {
+  const res = await apiClient.get("/support/testimonials/");
+  return res.data;
+}
+
+async function fetchPartners() {
+  const res = await apiClient.get("/support/partners/");
+  return res.data;
+}
+
+async function fetchCaseStudies() {
+  const res = await apiClient.get("/support/case-studies/");
+  return res.data;
+}
+
+async function submitContactForm(data) {
+  const res = await apiClient.post("/support/contact/", data);
+  return res.data;
+}
+
 // Export all as default object
-const api = { getProducts, getProductById };
+const api = {
+  getProducts,
+  getProductById,
+
+  // ⬇ New Support API Methods
+  fetchTestimonials,
+  fetchPartners,
+  fetchCaseStudies,
+  submitContactForm,
+};
+
 export default api;
