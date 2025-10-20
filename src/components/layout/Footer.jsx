@@ -39,6 +39,12 @@ export default function Footer() {
           <Link to="/contact" className="hover:text-white">
             Contact
           </Link>
+          <Link to="/license-policy" className="hover:text-white">
+            License Policy
+          </Link>
+          <Link to="/refund-policy" className="hover:text-white">
+            Refund Policy
+          </Link>
         </div>
         <div className="text-sm text-gray-400">
           <p>

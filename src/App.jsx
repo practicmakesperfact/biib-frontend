@@ -17,6 +17,8 @@ import Resources from "./pages/Resources";
 import CaseStudies from "./pages/CaseStudies";
 import Support from "./pages/Support";
 import Contact from "./pages/Contact";
+import LicensePolicy from "./pages/LicensePolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 
 export default function App() {
   return (
@@ -38,6 +40,8 @@ export default function App() {
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/support" element={<Support />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/license-policy" element={<LicensePolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
       </Route>
     </Routes>
   );
