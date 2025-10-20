@@ -14,6 +14,9 @@ import Account from "./pages/Account";
 import ProductDetail from "./pages/ProductDetail";
 import Favorites from "./pages/Favorites";
 import Resources from "./pages/Resources";
+import CaseStudies from "./pages/CaseStudies";
+import Support from "./pages/Support";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -32,6 +35,9 @@ export default function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/resources" element={<Resources />} />"
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/contact" element={<Contact />} />
       </Route>
     </Routes>
   );

@@ -142,7 +142,7 @@
 // }
 
 import { useEffect, useState } from "react";
-import { fetchTestimonials, fetchPartners } from "../services/api";
+import api from "../services/api";
 
 export default function Support() {
   const [testimonials, setTestimonials] = useState([]);
@@ -150,7 +150,7 @@ export default function Support() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([fetchTestimonials(), fetchPartners()])
+    Promise.all([api.fetchTestimonials(), api.fetchPartners()])
       .then(([tData, pData]) => {
         setTestimonials(tData);
         setPartners(pData);

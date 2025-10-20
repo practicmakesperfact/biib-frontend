@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { submitContactForm } from "../services/api";
+import api from "../services/api";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -16,7 +16,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await submitContactForm(form);
+      await api.submitContactForm(form);
       setStatus(" Message sent successfully!");
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch {

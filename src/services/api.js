@@ -25,17 +25,42 @@ const mockProducts = [
   },
 ];
 
-// ============ AXIOS INSTANCE ============ //
+const mockTestimonials = [
+  { id: 1, name: "John Doe", role: "Architect", message: "Great experience!" },
+  { id: 2, name: "Jane Smith", role: "Builder", message: "Excellent service!" },
+];
+
+const mockPartners = [
+  { id: 1, name: "Partner A", logo: "/images/partner1.png" },
+  { id: 2, name: "Partner B", logo: "/images/partner2.png" },
+];
+
+const mockCaseStudies = [
+  {
+    id: 1,
+    title: "Modern House Project",
+    summary: "A stunning modern house design.",
+    image: "/images/casestudy1.jpg",
+  },
+  {
+    id: 2,
+    title: "Villa Renovation",
+    summary: "Luxury villa transformation.",
+    image: "/images/casestudy2.jpg",
+  },
+];
+
+// ============ AXIOS INSTANCE (for later real integration) ============ //
 const apiClient = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1", // Updated to match Django backend
+  baseURL: "http://127.0.0.1:8000/api/v1",
   headers: { "Content-Type": "application/json" },
 });
 
-// ============ API METHODS ============ //
+// ============ PRODUCT METHODS ============ //
 async function getProducts() {
   if (USE_MOCK) {
-    return new Promise(
-      (resolve) => setTimeout(() => resolve(mockProducts), 500) // simulate delay
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockProducts), 300)
     );
   }
   const res = await apiClient.get("/products");
@@ -52,33 +77,50 @@ async function getProductById(id) {
   return res.data;
 }
 
-// ============ SUPPORT & TRUST SIGNALS API ============ //
+// ============ SUPPORT MOCK METHODS ============ //
 async function fetchTestimonials() {
+  if (USE_MOCK) {
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockTestimonials), 300)
+    );
+  }
   const res = await apiClient.get("/support/testimonials/");
   return res.data;
 }
 
 async function fetchPartners() {
+  if (USE_MOCK) {
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockPartners), 300)
+    );
+  }
   const res = await apiClient.get("/support/partners/");
   return res.data;
 }
 
 async function fetchCaseStudies() {
+  if (USE_MOCK) {
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockCaseStudies), 300)
+    );
+  }
   const res = await apiClient.get("/support/case-studies/");
   return res.data;
 }
 
 async function submitContactForm(data) {
+  if (USE_MOCK) {
+    console.log("Mock contact form submitted", data);
+    return { success: true };
+  }
   const res = await apiClient.post("/support/contact/", data);
   return res.data;
 }
 
-// Export all as default object
+// ============ EXPORTS ============ //
 const api = {
   getProducts,
   getProductById,
-
-  // ⬇ New Support API Methods
   fetchTestimonials,
   fetchPartners,
   fetchCaseStudies,

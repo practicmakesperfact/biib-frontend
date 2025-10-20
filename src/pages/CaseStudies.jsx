@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import { fetchCaseStudies } from "../services/api";
+
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../services/api";
 
 export default function CaseStudies() {
   const [caseStudies, setCaseStudies] = useState([]);
 
   useEffect(() => {
-    fetchCaseStudies().then(setCaseStudies);
+    api.fetchCaseStudies().then((data => setCaseStudies(data)));
   }, []);
 
   return (

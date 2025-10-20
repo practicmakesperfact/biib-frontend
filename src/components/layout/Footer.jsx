@@ -30,6 +30,15 @@ export default function Footer() {
           <Link to="/account" className="hover:text-white">
             Account
           </Link>
+          <Link to="/support" className="hover:text-white">
+            Support
+          </Link>
+          <Link to="/case-studies" className="hover:text-white">
+            Case Studies
+          </Link>
+          <Link to="/contact" className="hover:text-white">
+            Contact
+          </Link>
         </div>
         <div className="text-sm text-gray-400">
           <p>
