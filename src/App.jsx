@@ -1,8 +1,7 @@
-
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Layout from "./components/layout/Layout";
 
-// pages 
+// pages
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Product from "./pages/Product";
@@ -19,31 +18,35 @@ import Support from "./pages/Support";
 import Contact from "./pages/Contact";
 import LicensePolicy from "./pages/LicensePolicy";
 import RefundPolicy from "./pages/RefundPolicy";
+import TawkChat from "./components/TawkChat"; 
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/services" element={<Services />} />
-        <Route
-          path="/services/request-quote/:serviceId"
-          element={<RequestQuote />}
-        />
-        <Route path="/tutorials" element={<Tutorials />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/resources" element={<Resources />} />"
-        <Route path="/case-studies" element={<CaseStudies />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/license-policy" element={<LicensePolicy />} />
-        <Route path="/refund-policy" element={<RefundPolicy />} />
-      </Route>
-    </Routes>
+    <>
+      <TawkChat />
+
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/services" element={<Services />} />
+          <Route
+            path="/services/request-quote/:serviceId"
+            element={<RequestQuote />}
+          />
+          <Route path="/tutorials" element={<Tutorials />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/license-policy" element={<LicensePolicy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
-App.jsx
