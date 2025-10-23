@@ -11,41 +11,80 @@ export default function CatalogPage() {
     beds: "",
     baths: "",
     stories: "",
-    minPrice: "",
-    maxPrice: "",
-    minSqft: "",
-    maxSqft: "",
+    priceMin: "",
+    priceMax: "",
+    sqftMin: "",
+    sqftMax: "",
     fileType: "",
   });
 
   const [sortOption, setSortOption] = useState("relevance");
-  const [view, setView] = useState("grid"); // 'grid' or 'list'
+  const [view, setView] = useState("grid"); // grid or list
 
-  //  Filter first, then sort
+  // Apply filtering logic
   const filteredProducts = useMemo(() => {
-    return productsData.filter((p) => {
+    return productsData.filter((product) => {
+      const {
+        query,
+        style,
+        beds,
+        baths,
+        stories,
+        priceMin,
+        priceMax,
+        sqftMin,
+        sqftMax,
+        fileType,
+      } = filters;
+
+      // Safe Search by title or description (handles missing values)
       if (
-        filters.query &&
-        !p.title.toLowerCase().includes(filters.query.toLowerCase())
+        query &&
+        !(
+          (product.title?.toLowerCase() || "").includes(query.toLowerCase()) ||
+          (product.description?.toLowerCase() || "").includes(
+            query.toLowerCase()
+          )
+        )
+      ) {
+        return false;
+      }
+
+      // Style filter (case-insensitive)
+      if (style && product.style?.toLowerCase() !== style.toLowerCase())
+        return false;
+
+      // Beds filter
+      if (beds && product.beds < parseInt(beds)) return false;
+
+      // Baths filter
+      if (baths && product.baths < parseInt(baths)) return false;
+
+      // Stories filter
+      if (stories && product.stories < parseInt(stories)) return false;
+
+      // Price range filter
+      if (priceMin && product.basePrice < parseFloat(priceMin)) return false;
+      if (priceMax && product.basePrice > parseFloat(priceMax)) return false;
+
+      // Square footage filter
+      if (sqftMin && product.sqft < parseFloat(sqftMin)) return false;
+      if (sqftMax && product.sqft > parseFloat(sqftMax)) return false;
+
+      // File type filter (check in array of file types)
+      if (
+        fileType &&
+        !product.fileTypes?.some(
+          (f) => f.toLowerCase() === fileType.toLowerCase()
+        )
       )
         return false;
-
-      if (filters.minPrice && p.basePrice < Number(filters.minPrice))
-        return false;
-      if (filters.maxPrice && p.basePrice > Number(filters.maxPrice))
-        return false;
-      if (filters.minSqft && p.sqft < Number(filters.minSqft)) return false;
-      if (filters.maxSqft && p.sqft > Number(filters.maxSqft)) return false;
-
-      if (filters.beds && p.beds !== Number(filters.beds)) return false;
-      if (filters.baths && Math.floor(p.baths) !== Number(filters.baths))
-        return false;
-      if (filters.stories && p.floors !== Number(filters.stories)) return false;
 
       return true;
     });
   }, [filters]);
 
+  // Sorting logic
   const sortedProducts = useMemo(() => {
     return [...filteredProducts].sort((a, b) => {
       switch (sortOption) {
@@ -63,7 +102,7 @@ export default function CatalogPage() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
-      {/*  Search + Filters */}
+      {/*Search + Filters */}
       <div className="flex flex-col md:flex-row gap-6 mb-8">
         <div className="flex-1">
           <SearchBar
@@ -77,9 +116,8 @@ export default function CatalogPage() {
         />
       </div>
 
-      {/* Sorting + View Toggle */}
+      {/* Sorting + View */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        {/* Sorting */}
         <div className="relative inline-block">
           <select
             value={sortOption}
@@ -128,7 +166,7 @@ export default function CatalogPage() {
         </div>
       </div>
 
-      {/* Products */}
+      {/* Products Display */}
       {sortedProducts.length === 0 ? (
         <p className="text-gray-500 text-center py-10">
           No results found. Try adjusting your filters.
