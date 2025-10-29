@@ -5,7 +5,7 @@ export function FiltersPanel({ onChange }) {
     style: "",
     beds: "",
     baths: "",
-    stories: "",
+    floors: "",
     priceMin: "",
     priceMax: "",
     sqftMin: "",
@@ -120,7 +120,7 @@ export function FiltersPanel({ onChange }) {
           value={filters.stories}
           onChange={(e) => updateFilter("stories", e.target.value)}
         >
-          <option value="">Stories</option>
+          <option value="">floors</option>
           <option>1</option>
           <option>2</option>
           <option>3+</option>

@@ -1,16 +1,17 @@
 import { useState, useMemo } from "react";
-import { SearchBar } from "@/components/search/SearchBar";
+import { useOutletContext } from "react-router-dom";
 import { FiltersPanel } from "@/components/search/FiltersPanel";
 import ProductCard from "@/components/product/ProductCard";
 import productsData from "@/data/products";
 
 export default function CatalogPage() {
+  const { searchTerm } = useOutletContext(); 
+
   const [filters, setFilters] = useState({
-    query: "",
     style: "",
     beds: "",
     baths: "",
-    stories: "",
+    floors: "",
     priceMin: "",
     priceMax: "",
     sqftMin: "",
@@ -19,17 +20,16 @@ export default function CatalogPage() {
   });
 
   const [sortOption, setSortOption] = useState("relevance");
-  const [view, setView] = useState("grid"); // grid or list
+  const [view, setView] = useState("grid");
 
-  // Apply filtering logic
+  // Filtering Logic (live search + filters)
   const filteredProducts = useMemo(() => {
     return productsData.filter((product) => {
       const {
-        query,
         style,
         beds,
         baths,
-        stories,
+        floors,
         priceMin,
         priceMax,
         sqftMin,
@@ -37,41 +37,32 @@ export default function CatalogPage() {
         fileType,
       } = filters;
 
-      // Safe Search by title or description (handles missing values)
+      // Search from Header (real-time)
       if (
-        query &&
+        searchTerm &&
         !(
-          (product.title?.toLowerCase() || "").includes(query.toLowerCase()) ||
+          (product.title?.toLowerCase() || "").includes(
+            searchTerm.toLowerCase()
+          ) ||
           (product.description?.toLowerCase() || "").includes(
-            query.toLowerCase()
+            searchTerm.toLowerCase()
           )
         )
       ) {
         return false;
       }
 
-      // Style filter (case-insensitive)
+      //  Other filters
       if (style && product.style?.toLowerCase() !== style.toLowerCase())
         return false;
-
-      // Beds filter
       if (beds && product.beds < parseInt(beds)) return false;
-
-      // Baths filter
       if (baths && product.baths < parseInt(baths)) return false;
-
-      // Stories filter
-      if (stories && product.stories < parseInt(stories)) return false;
-
-      // Price range filter
+      if (floors && product.floors < parseInt(floors)) return false;
       if (priceMin && product.basePrice < parseFloat(priceMin)) return false;
       if (priceMax && product.basePrice > parseFloat(priceMax)) return false;
-
-      // Square footage filter
       if (sqftMin && product.sqft < parseFloat(sqftMin)) return false;
       if (sqftMax && product.sqft > parseFloat(sqftMax)) return false;
 
-      // File type filter (check in array of file types)
       if (
         fileType &&
         !product.fileTypes?.some(
@@ -82,9 +73,8 @@ export default function CatalogPage() {
 
       return true;
     });
-  }, [filters]);
+  }, [filters, searchTerm]);
 
-  // Sorting logic
   const sortedProducts = useMemo(() => {
     return [...filteredProducts].sort((a, b) => {
       switch (sortOption) {
@@ -102,13 +92,8 @@ export default function CatalogPage() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
-      {/*Search + Filters */}
+      {/*  Only filters now, no search bar */}
       <div className="flex flex-col md:flex-row gap-6 mb-8">
-        <div className="flex-1">
-          <SearchBar
-            onSearch={(query) => setFilters((prev) => ({ ...prev, query }))}
-          />
-        </div>
         <FiltersPanel
           onChange={(newFilters) =>
             setFilters((prev) => ({ ...prev, ...newFilters }))
@@ -145,7 +130,7 @@ export default function CatalogPage() {
           </svg>
         </div>
 
-        {/* View toggle */}
+        {/* View Toggle */}
         <div className="flex gap-2">
           <button
             onClick={() => setView("grid")}
@@ -166,7 +151,7 @@ export default function CatalogPage() {
         </div>
       </div>
 
-      {/* Products Display */}
+      {/*  Filtered Products */}
       {sortedProducts.length === 0 ? (
         <p className="text-gray-500 text-center py-10">
           No results found. Try adjusting your filters.
