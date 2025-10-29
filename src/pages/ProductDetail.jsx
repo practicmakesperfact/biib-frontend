@@ -166,12 +166,11 @@ export default function ProductDetail() {
               className="ml-2 rounded px-1 py-1 pr-10 outline-none"
             >
               <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
               <option value="ETB">ETB</option>
             </select>
           </div>
 
-          <div>
+          {/* <div>
             <label className="text-xs text-gray-500">Qty</label>
             <input
               type="number"
@@ -180,7 +179,7 @@ export default function ProductDetail() {
               onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
               className="ml-2 w-20 rounded px-2 py-1 outline-none"
             />
-          </div>
+          </div> */}
 
           <div className="ml-auto text-right">
             <div className="text-xs text-gray-500">Price</div>
