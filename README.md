@@ -169,7 +169,7 @@ npm run build
 ![alt text](image-3.png)
 
 ### 🛒 Cart & Checkout
-![alt text](image-5.png)
+![alt text](image-6.png)
 ![alt text](image-4.png)
 🌐 Live Demo 
 soon!
