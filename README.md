@@ -51,7 +51,7 @@ This repository contains **only the frontend implementation**, built using:
 - Key specs & footprint info  
 - **Sample Preview** (low-res, watermarked PDF)  
 - Deliverables list (PDF, DWG, SKP formats)  
-- License options: personal, commercial, unlimited  
+- License options: personal, commercial 
 - **Dynamic pricing + multi-currency**  
 - “Add to Cart” & “Buy Now” buttons  
 - “Request Modification” quote form  
@@ -60,7 +60,7 @@ This repository contains **only the frontend implementation**, built using:
 
 ---
 
-### 💳 D. Checkout (UI Only)
+### 💳 D. Checkout 
 - Guest checkout supported  
 - Form with billing details & payment method selection  
 - Placeholder for local (Chapa) & international (PayPal) integration  
@@ -77,7 +77,7 @@ This repository contains **only the frontend implementation**, built using:
   - Saved Plans & Wishlist  
   - Account Info / Logout  
 
-*(Backend integration planned for future — Django auth & JWT)*
+*(Backend integration by— Django auth & JWT)*
 
 ---
 
@@ -154,4 +154,22 @@ npm run dev
 📦 Build for Production
 npm run build
 
-🌐 Live Demo (optional)
+
+## 🖼️ Screenshots
+
+### 🏠 Home / Landing Page
+![Home Page Screenshot]
+![alt text](image.png)
+
+### 🏘️ Catalog / Product Grid
+![Catalog Screenshot]
+![alt text](image-2.png)
+
+### 📄 Product Detail
+![Product Detail Screenshot]![alt text](image-3.png)
+
+### 🛒 Cart & Checkout
+![Cart Screenshot]![alt text](image-5.png)
+![Checkout Screenshot]![alt text](image-4.png)
+🌐 Live Demo 
+soon!
