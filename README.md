@@ -158,18 +158,18 @@ npm run build
 ## 🖼️ Screenshots
 
 ### 🏠 Home / Landing Page
-![Home Page Screenshot]
+
 ![alt text](image.png)
 
 ### 🏘️ Catalog / Product Grid
-![Catalog Screenshot]
+
 ![alt text](image-2.png)
 
 ### 📄 Product Detail
-![Product Detail Screenshot]![alt text](image-3.png)
+![alt text](image-3.png)
 
 ### 🛒 Cart & Checkout
-![Cart Screenshot]![alt text](image-5.png)
-![Checkout Screenshot]![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-4.png)
 🌐 Live Demo 
 soon!
